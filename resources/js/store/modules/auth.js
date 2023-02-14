@@ -23,15 +23,31 @@ export default {
         }
     },
     actions: {
-        async login({commit}, payload) {
+        async login({commit, dispatch}, payload) {
 
             commit("loader/SET_PROCESSING", true, {root: true})
+
+            try {
+                const response = await axios.post('/api/v1/login', payload)
+                console.log(response)
+            } catch (e) {
+                dispatch("errors/processingErrors", e, {root: true})
+            }
+
             commit("loader/SET_PROCESSING", false, {root: true})
 
             // router.push({name: 'home'})
         },
-        async register({commit}, payload) {
+        async register({commit, dispatch}, payload) {
             commit("loader/SET_PROCESSING", true, {root: true})
+
+            try {
+                const response = await axios.post('/api/v1/register', payload)
+                console.log(response)
+            } catch (e) {
+                dispatch("errors/processingErrors", e, {root: true})
+            }
+
             commit("loader/SET_PROCESSING", false, {root: true})
 
             // router.push({name: 'home'})

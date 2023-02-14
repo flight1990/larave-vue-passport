@@ -15,6 +15,9 @@
             :placeholder="placeholder"
             :autocomplete="autocomplete"
         />
+        <template v-if="validationsErrors[name]">
+            <small v-for="(error, i) in validationsErrors[name]" :key="i">{{ error }}</small>
+        </template>
     </div>
 </template>
 
@@ -24,7 +27,7 @@ import {mapGetters} from "vuex";
 export default {
     name: "BaseInput",
     computed: {
-        ...mapGetters({loading: "loader/isProcessing"})
+        ...mapGetters({loading: "loader/isProcessing", validationsErrors: "errors/validationErrors"})
     },
     inheritAttrs: false,
     props: {
