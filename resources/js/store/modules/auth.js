@@ -1,4 +1,5 @@
 // import axios from "axios";
+import router from "@/router";
 
 export default {
     namespaced: true,
@@ -28,34 +29,31 @@ export default {
             commit("loader/SET_PROCESSING", true, {root: true})
 
             try {
-                const response = await axios.post('/api/v1/login', payload)
-                console.log(response)
+                await axios.post('/api/v1/login', payload)
+                router.push({name: 'home'})
             } catch (e) {
                 dispatch("errors/processingErrors", e, {root: true})
             }
 
             commit("loader/SET_PROCESSING", false, {root: true})
-
-            // router.push({name: 'home'})
         },
         async register({commit, dispatch}, payload) {
+
             commit("loader/SET_PROCESSING", true, {root: true})
 
             try {
-                const response = await axios.post('/api/v1/register', payload)
-                console.log(response)
+                await axios.post('/api/v1/register', payload)
+                router.push({name: 'home'})
             } catch (e) {
                 dispatch("errors/processingErrors", e, {root: true})
             }
 
             commit("loader/SET_PROCESSING", false, {root: true})
-
-            // router.push({name: 'home'})
         },
         async logout({commit}) {
             commit("loader/SET_PROCESSING", true, {root: true})
             commit("loader/SET_PROCESSING", false, {root: true})
-            // router.push({name: 'login'})
+            router.push({name: 'login'})
         }
     }
 }
