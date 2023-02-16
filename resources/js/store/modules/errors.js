@@ -22,12 +22,12 @@ export default {
     },
     actions: {
         processingErrors({commit}, errors) {
-            if (errors.response.status === 422) {
-                commit("SET_VALIDATION_ERRORS", errors.response.data.errors)
-            }
+            if (errors.response.status === 422) commit("SET_VALIDATION_ERRORS", errors.response.data.errors)
+            if (errors.response.status === 401) commit("SET_ERROR_MESSAGE", errors.response.data.message)
         },
         clearValidationErrors({commit, getters}) {
             if (Object.keys(getters.validationErrors).length) commit("SET_VALIDATION_ERRORS", {});
+            if (getters.errorMessage) commit("SET_ERROR_MESSAGE", null);
         }
     }
 }

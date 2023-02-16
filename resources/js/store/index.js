@@ -6,9 +6,9 @@ import loader from '@/store/modules/loader';
 import errors from '@/store/modules/errors';
 
 export default createStore({
-    // plugins:[
-    //     createPersistedState()
-    // ],
+    plugins:[
+        createPersistedState()
+    ],
     modules:{
         auth,
         loader,

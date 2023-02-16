@@ -12,6 +12,7 @@
             :type="type"
             :value="modelValue"
             @input="updateValue"
+            @change="delete validationsErrors[name]"
             :placeholder="placeholder"
             :autocomplete="autocomplete"
         />

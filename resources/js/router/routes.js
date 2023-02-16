@@ -1,3 +1,6 @@
+import auth from "@/middleware/auth";
+import guest from "@/middleware/guest";
+
 
 const Default  = () => import("@/views/layouts/Default.vue");
 
@@ -15,17 +18,20 @@ const routes = [
             {
                 name: "home",
                 path: "/",
-                component: Home
+                component: Home,
+                meta: { middleware: [auth] },
             },
             {
                 name: "login",
                 path: "/login",
-                component: Login
+                component: Login,
+                meta: { middleware: [guest] },
             },
             {
                 name: "register",
                 path: "/register",
-                component: Register
+                component: Register,
+                meta: { middleware: [guest] },
             }
         ]
     },
