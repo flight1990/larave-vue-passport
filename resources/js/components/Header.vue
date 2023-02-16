@@ -1,14 +1,16 @@
 <template>
 
-    <AuthUser v-if="authUser"> </AuthUser>
+    <AuthUser v-if="authUser"></AuthUser>
 
     <header>
         <nav>
             <ul>
-                <li>
-                    <router-link :to="{name: 'home'}">Home</router-link>
-                </li>
-                <template v-if="!authUser">
+                <template v-if="authUser">
+                    <li>
+                        <router-link :to="{name: 'home'}">Home</router-link>
+                    </li>
+                </template>
+                <template v-else>
                     <li>
                         <router-link :to="{name: 'login'}">Login</router-link>
                     </li>

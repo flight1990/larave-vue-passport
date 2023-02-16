@@ -47,7 +47,10 @@ class PassportAuthController extends BaseController
 
     public function logout(): JsonResponse
     {
-        auth()->user()->token()->revoke();
+        auth()->user()->tokens->each(function ($token) {
+            $token->delete();
+        });
+
         return $this->sendResponse([], "User logged out successfully");
     }
 }
