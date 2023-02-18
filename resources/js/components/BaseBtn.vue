@@ -3,8 +3,7 @@
         :disabled="loading"
         :type="type"
     >
-        <span>{{ text }}</span>
-        <span v-if="loading"> ...</span>
+        {{ text }}
     </button>
 </template>
 

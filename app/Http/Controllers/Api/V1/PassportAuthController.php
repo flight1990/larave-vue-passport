@@ -42,7 +42,7 @@ class PassportAuthController extends BaseController
         $user = User::create($payload);
         $token = $user->createToken(config('app.name'))->accessToken;
 
-        return $this->sendResponse(['token' => $token]);
+        return $this->sendResponse(['token' => $token, 'user' => new UserResource($user)]);
     }
 
     public function logout(): JsonResponse

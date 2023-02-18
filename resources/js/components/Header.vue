@@ -9,6 +9,9 @@
                     <li>
                         <router-link :to="{name: 'home'}">Home</router-link>
                     </li>
+                    <li>
+                        <router-link :to="{name: 'users.index'}">Users</router-link>
+                    </li>
                 </template>
                 <template v-else>
                     <li>

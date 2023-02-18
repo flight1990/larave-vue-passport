@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\PassportAuthController;
+use App\Http\Controllers\Api\V1\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,5 +24,9 @@ Route::prefix('v1')->group(function () {
             Route::get('user', 'authUser');
             Route::post('logout', 'logout');
         });
+    });
+
+    Route::middleware('auth:api')->group(function () {
+        Route::apiResource('users', UserController::class);
     });
 });
